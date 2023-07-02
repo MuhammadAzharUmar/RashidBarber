@@ -10,13 +10,25 @@ class ApiTestingViewModel extends ChangeNotifier {
   Future<void> getDatafromApi(BuildContext context) async {
     try {
       List<dynamic> jsonData = await ApiServices().fetchData(url);
-      _names =
-          jsonData.map((data) => ApiTestingModel(name: data['username'])).toList();
+      _names = jsonData
+          .map((data) => ApiTestingModel(name: data['username']))
+          .toList();
       notifyListeners();
     } catch (error) {
       if (kDebugMode) {
         print(error.toString());
       }
+
+      _names = [
+        ApiTestingModel(name: "404"),
+        ApiTestingModel(name: "404"),
+        ApiTestingModel(name: "404"),
+        ApiTestingModel(name: "404"),
+        ApiTestingModel(name: "404"),
+        ApiTestingModel(name: "404"),
+   
+      ];
+      notifyListeners();
     }
   }
 

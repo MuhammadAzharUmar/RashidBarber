@@ -16,7 +16,8 @@ class OurBarberCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+ final apiTestingViewModel1 = Provider.of<ApiTestingViewModel>(context, listen: false);
+          apiTestingViewModel1.getDatafromApi(context);
     return Consumer<OursBarberViewModel>(
       builder: (context, oursBarberViewModel, child) {
         
@@ -80,7 +81,9 @@ class OurBarberCard extends StatelessWidget {
                   Consumer<ApiTestingViewModel>(builder: (context, apiTestingViewModel, child) {
                     apiTestingViewModel.getDatafromApi(context);
                    return 
-                   apiTestingViewModel.names.isEmpty? Container(width: 50,height: 10,color: kAppBackground,):
+                   apiTestingViewModel.names.isEmpty? Container(width: 50,height: 10,color: kAppBackground,
+                   child:const LinearProgressIndicator(color: kCardBackground,backgroundColor: kAppBackground),
+                   ):
                    Text(
                         apiTestingViewModel.names[index].name,//getting data from api
                         textAlign: TextAlign.center,
