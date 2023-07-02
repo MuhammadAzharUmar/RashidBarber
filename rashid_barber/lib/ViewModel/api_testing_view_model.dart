@@ -18,17 +18,6 @@ class ApiTestingViewModel extends ChangeNotifier {
       if (kDebugMode) {
         print(error.toString());
       }
-
-      _names = [
-        ApiTestingModel(name: "404"),
-        ApiTestingModel(name: "404"),
-        ApiTestingModel(name: "404"),
-        ApiTestingModel(name: "404"),
-        ApiTestingModel(name: "404"),
-        ApiTestingModel(name: "404"),
-   
-      ];
-      notifyListeners();
     }
   }
 

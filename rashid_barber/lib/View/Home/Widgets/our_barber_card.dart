@@ -16,8 +16,7 @@ class OurBarberCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
- final apiTestingViewModel1 = Provider.of<ApiTestingViewModel>(context, listen: false);
-          apiTestingViewModel1.getDatafromApi(context);
+
     return Consumer<OursBarberViewModel>(
       builder: (context, oursBarberViewModel, child) {
         
