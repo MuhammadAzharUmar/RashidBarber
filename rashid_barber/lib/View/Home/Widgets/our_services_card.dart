@@ -8,29 +8,35 @@ class ServicesCard extends StatelessWidget {
   const ServicesCard({
     super.key,
     required this.width,
+    required this.crossAxisCount,
+    required this.height,
   });
 
   final double width;
+  final double height;
+  final int crossAxisCount;
 
   @override
   Widget build(BuildContext context) {
     return Consumer<OursServicesViewModel>(
       builder: (context, oursServicesViewModel, child) {
         return SizedBox(
-          height: width * 1 <= 600 ? 280 : 350,
+          height: height,
           child: GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
             itemCount: oursServicesViewModel.oursServicesList.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10,
-                childAspectRatio: width * 1 <= 600 ? 2.2 : 4,
-                crossAxisCount: 2),
+                childAspectRatio: width * 1 <= 450
+                    ? 1.8
+                    : width * 1 > 450 && width * 1 <= 575
+                        ? 2.2//extra small managed
+                        : 1.8, //small also ok
+                crossAxisCount: crossAxisCount),
             itemBuilder: (context, index) {
               return Container(
-                padding: width * 1 <= 600
-                    ? const EdgeInsets.all(10)
-                    : const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
                     color: kCardBackground,
                     borderRadius: BorderRadius.circular(8)),
